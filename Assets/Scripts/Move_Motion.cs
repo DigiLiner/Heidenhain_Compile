@@ -191,7 +191,7 @@ public class Move_Motion// : MonoBehaviour {
 	
 	#region TimeDeal
 	static void Timer(){
-		while(start_time <= end_time){
+		while((start_time <= end_time) && (false == CompileParas._IsProgExit)){
 //			yield return new WaitForSeconds(0.01f);
 			//Thread.Sleep (10);
 			//Debug.Log ("start"+start_time);
@@ -613,7 +613,9 @@ public class Move_Motion// : MonoBehaviour {
 		CompileParas.UpdatePosValue ();
 		
 		if(CompileParas.bMotion_flag){
-			CompilMultiThread.ThreadRestart ();
+			if(!CompilMultiThread.ThreadRestart ()){
+				Debug.Log ("Critical err:ThreadRestart error!");	
+			}
 			CompileParas.bMotion_flag = false;
 		}
 	}

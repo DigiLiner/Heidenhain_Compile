@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System;
 using System.Collections.Generic;
@@ -112,7 +112,7 @@ public class Radius_CompCal{
 			if(!motion_2.List_flag){
 				if(motion_2.Motion_Type == (int)MotionType.CR_P || motion_2.Motion_Type == (int)MotionType.CR_N){
 					_error = "Line:" + (motion_2.index+1) + " " + "执行循环指令或返回参考点指令后恢复半径补偿出错，起刀程序段不能为圆弧指令！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-Motion-131 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-Motion-131 %";
 					_compileInfo.Add (_error);
 					return false;
 				}else{
@@ -131,7 +131,7 @@ public class Radius_CompCal{
 //			{
 				if(motion_1.Motion_Type == (int)MotionType.CR_P || motion_1.Motion_Type == (int)MotionType.CR_N){
 					_error = "Line:" + (motion_2.index+1) + " " + "暂时取消刀尖半径补偿出错，取消半径补偿程序段不能为圆弧指令！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-Motion-130 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-Motion-130 %";
 					_compileInfo.Add (_error);
 					return false;
 				}else{

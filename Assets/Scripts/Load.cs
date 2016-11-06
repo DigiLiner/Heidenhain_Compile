@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -83,7 +83,7 @@ public static class Load{
 						Temp_SList.Add (Temp_Array[start_Array+2]);
 						if(Temp_Array[start_Array+3] != "MM" && Temp_Array[start_Array+3] != "INCH"){
 							string error = "Line:"+LineNumber+ " 程序单位定义错误";
-							if(CompileParas.DEBUG) error += "% ErrorDBG-Load-141 %";
+							if(CompileParas._DEBUG) error += "% ErrorDBG-Load-141 %";
 							Error_Mes.Add (error);
 							Success = false;
 						}else{
@@ -123,7 +123,7 @@ public static class Load{
 //							Temp_SList.Add("1");
 							if(LArea.Start != -1){
 								string error = "Line:"+LineNumber+ " LBL定义错误";
-								if(CompileParas.DEBUG) error += "% ErrorDBG-Load-140 %";
+								if(CompileParas._DEBUG) error += "% ErrorDBG-Load-140 %";
 								Error_Mes.Add (error);
 								Success = false;
 							}else{
@@ -142,21 +142,21 @@ public static class Load{
 											Modal_State.LBL_LineNumber.Add (LArea.name,LArea);
 										}catch{
 											string error = "Line:"+LineNumber+ " LBL定义错误";
-											if(CompileParas.DEBUG) error += "% ErrorDBG-Load-139 %";
+											if(CompileParas._DEBUG) error += "% ErrorDBG-Load-139 %";
 											Error_Mes.Add (error);
 											Success = false;
 										}
 										LArea = new LineArea();
 									}else{
 										string error = "Line:"+LineNumber+ " LBL定义错误";
-										if(CompileParas.DEBUG) error += "% ErrorDBG-Load-138 %";
+										if(CompileParas._DEBUG) error += "% ErrorDBG-Load-138 %";
 										Error_Mes.Add (error);
 										Success = false;
 									}
 								}else{
 									if(LArea.Start != -1){
 										string error = "Line:"+LineNumber+ " LBL定义错误";
-										if(CompileParas.DEBUG) error += "% ErrorDBG-Load-137 %";
+										if(CompileParas._DEBUG) error += "% ErrorDBG-Load-137 %";
 										Error_Mes.Add (error);
 										Success = false;
 									}else{
@@ -166,7 +166,7 @@ public static class Load{
 								}
 							}catch{
 								string error = "Line:"+LineNumber+ " LBL定义错误";
-								if(CompileParas.DEBUG) error += "% ErrorDBG-Load-136 %";
+								if(CompileParas._DEBUG) error += "% ErrorDBG-Load-136 %";
 								Error_Mes.Add (error);
 								Success = false;
 							}
@@ -187,7 +187,7 @@ public static class Load{
 									LBL_info.REP = int.Parse (Temp_Str);
 								}catch{
 									string error = "Line:"+LineNumber+ " CALL LBL定义错误！";
-									if(CompileParas.DEBUG) error += "% ErrorDBG-Load-135 %";
+									if(CompileParas._DEBUG) error += "% ErrorDBG-Load-135 %";
 									Error_Mes.Add (error);
 									Success = false;
 								}
@@ -211,7 +211,7 @@ public static class Load{
 							Temp_SList.Add (QArray[1]);
 						}else{
 							string error = "Line:"+LineNumber+ " FN0定义错误！";
-							if(CompileParas.DEBUG) error += "% ErrorDBG-Load-134 %";
+							if(CompileParas._DEBUG) error += "% ErrorDBG-Load-134 %";
 							Error_Mes.Add (error);
 							Success = false;
 						}
@@ -238,7 +238,7 @@ public static class Load{
 					#endregion
 					}else{
 						string error = "Line:"+LineNumber+ " 未定义解析代码！";
-						if(CompileParas.DEBUG) error += "% ErrorDBG-Load-133 %";
+						if(CompileParas._DEBUG) error += "% ErrorDBG-Load-133 %";
 						Error_Mes.Add (error);
 						Success = false;
 					}
@@ -295,7 +295,7 @@ public static class Load{
 					}
 				}else{
 					string error = "Line:"+Modal_State.CallLBL_info[i].Index+ " CALL LBL定义错误！";
-					if(CompileParas.DEBUG) error += "% ErrorDBG-LBL-132 %";
+					if(CompileParas._DEBUG) error += "% ErrorDBG-LBL-132 %";
 					Error_Mes.Add (error);
 					Success = false;
 				}

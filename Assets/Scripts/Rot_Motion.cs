@@ -62,7 +62,7 @@ public class Rot_Motion// : MonoBehaviour {
 	
 	#region TimeDeal
 	static void Timer(){
-		while(start_time <= end_time){
+		while((start_time <= end_time) && (false == CompileParas._IsProgExit)){
 //			yield return new WaitForSeconds(0.01f);
 			//Thread.Sleep (1);
 		}

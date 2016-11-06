@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
@@ -64,7 +64,7 @@ public class Lexical_Check{
 		if(satisfactoryM.IndexOf(CodeSeg) == -1)
 		{
 			_errorMessage = "Line:" + (index+1) + " 系统中不存在该M指令或暂不支持该M指令: " + CodeSeg;
-			if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-MCHK-70 %";
+			if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-MCHK-70 %";
 			return false;
 		}else{
 			try{
@@ -74,7 +74,7 @@ public class Lexical_Check{
 				M_Str += m_value.ToString ();
 			}catch{
 				_errorMessage = "Line:" + (index+1) + " 系统中不存在该M指令: " + CodeSeg;
-				if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-MCHK-71 %";
+				if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-MCHK-71 %";
 				return false;
 			}
 		}
@@ -194,7 +194,7 @@ public class Lexical_Check{
 		#endregion
 		default:
 			_errorMessage = "Line:" + (index+1) + " 系统暂不支持该M指令: " + M_Str;
-			if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-MCHK-72 %";
+			if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-MCHK-72 %";
 			return false;
 		}
 		#endregion
@@ -210,14 +210,14 @@ public class Lexical_Check{
 			str_value = int.Parse (CodeStr);
 		}catch{
 			_errorMessage = "Line:" + (index+1) + address_value + "地址后值的格式错误";
-			if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-ICHK-73 %";
+			if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-ICHK-73 %";
 			return false;
 		}
 		switch(address_value){
 		case "S":
 			if(str_value < 0 || str_value > 99999){
 				_errorMessage = "Line:" + (index+1) + " " + address_value + "地址后值为" + str_value + ", 超出规定范围(0~99999)";
-				if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-ICHK_S-74 %";
+				if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-ICHK_S-74 %";
 				return false;
 			}
 			StepData.S_value = str_value;
@@ -286,7 +286,7 @@ public class Lexical_Check{
 				str_value = (float)Convert.ToDouble(CodeStr);	
 			}catch{
 				_errorMessage = "Line:" + (index+1) + address_value + "地址后值的格式错误";
-				if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-FCHK-75 %";
+				if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-FCHK-75 %";
 				return false;
 			}
 		}
@@ -389,14 +389,14 @@ public class Lexical_Check{
 		case "IPA":
 			if(str_value < -5400 || str_value > 5400 || str_value == 0){
 				_errorMessage = "Line:" + (index+1) + "IPA值超出范围!";
-				if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-FCHK_IPA-76 %";
+				if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-FCHK_IPA-76 %";
 				return false;
 			}
 			StepData.IPA_Value = str_value;
 			break;
 		default:
 			_errorMessage = "Line:" + (index+1) + " 系统暂不支持该指令: " + CodeStr;
-			if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-FCHK-77 %";
+			if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-FCHK-77 %";
 			return false;
 		}
 		
@@ -426,7 +426,7 @@ public class Lexical_Check{
 		Index += 2;
 		if(!RET){
 			_errorMessage = "Line:" + (AllIndex+1) + "FN0指令错误！";
-			if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-FN0CHK-78 %";
+			if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-FN0CHK-78 %";
 		}
 		return RET;
 	}
@@ -440,7 +440,7 @@ public class Lexical_Check{
 			Value = float.Parse (StrArray[1]);
 		}catch{
 			_errorMessage = "Line:" + (Index+1) + " 系统暂不支持该指令: " + CodeStr;
-			if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-QCHK-79 %";
+			if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-QCHK-79 %";
 			return false;
 		}
 		if(Modal_State.Q_Value.ContainsKey (Q_value)){
@@ -456,7 +456,7 @@ public class Lexical_Check{
 		if(Codeseg[_Index+1] == "CALL"){
 			if(_Index + 3 >= Codeseg.Count){
 				_errorMessage = "Line:" + (AllIndex+1) + " TOOL指令错误!";
-				if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-TOOL-80 %";
+				if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-TOOL-80 %";
 				return false;
 			}
 			tool_num = Codeseg[_Index+2];
@@ -467,13 +467,13 @@ public class Lexical_Check{
 				step_data.ImmediateAdd ((char)ImmediateMotionType.TOOLCALL);
 			}else{
 				_errorMessage = "Line:" + (AllIndex+1) + " TOOL指令错误!";
-				if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-TOOL-81 %";
+				if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-TOOL-81 %";
 				return false;
 			}
 		}else if(Codeseg[_Index+1] == "DEF"){
 			if(_Index + 2 >= Codeseg.Count){
 				_errorMessage = "Line:" + (AllIndex+1) + " TOOL指令错误!";
-				if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-TOOL-82 %";
+				if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-TOOL-82 %";
 				return false;
 			}
 			tool_num = Codeseg[_Index+2];
@@ -481,7 +481,7 @@ public class Lexical_Check{
 			step_data.ImmediateAdd ((char)ImmediateMotionType.TOOLDEF);
 		}else{
 			_errorMessage = "Line:" + (AllIndex+1) + " TOOL指令错误!";
-			if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-TOOL-83 %";
+			if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-TOOL-83 %";
 			return false;
 		}
 		return true;
@@ -507,7 +507,7 @@ public class Lexical_Check{
 				break;
 			default:
 				_errorMessage = "Line:"+(Index+1) + "CYCL DEF指令错误！";
-				if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-CYCLEDEF-84 %";
+				if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-CYCLEDEF-84 %";
 				ErrorMessageAdd (_errorMessage);
 				return false;
 			}
@@ -597,19 +597,19 @@ public class Lexical_Check{
 			if(stepData.IXYZ_State[0]){
 				if(stepData.IXYZ_State[1] && stepData.XYZ_State[1]){
 					_errorMessage =  "Line:" + (Index+1) + " " + "指令格式有误！";
-					if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-POSCal-85 %";
+					if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-POSCal-85 %";
 					_compileInfo.Add (ErrorMessage);
 					return 2;
 				}
 				if(stepData.IXYZ_State[2] && stepData.XYZ_State[2]){
 					_errorMessage =  "Line:" + (Index+1) + " " + "指令格式有误！";
-					if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-POSCal-86 %";
+					if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-POSCal-86 %";
 					_compileInfo.Add (ErrorMessage);
 					return 2;
 				}
 				if(stepData.IXYZ_State[3] && stepData.XYZ_State[3]){
 					_errorMessage =  "Line:" + (Index+1) + " " + "指令格式有误！";
-					if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-POSCal-87 %";
+					if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-POSCal-87 %";
 					_compileInfo.Add (ErrorMessage);
 					return 2;
 				}
@@ -633,19 +633,19 @@ public class Lexical_Check{
 			if(stepData.IABC_State[0]){
 				if(stepData.IABC_State[1] && stepData.ABC_State[1]){
 					_errorMessage =  "Line:" + (Index+1) + " " + "指令格式有误！";
-					if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-RotCal-88 %";
+					if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-RotCal-88 %";
 					_compileInfo.Add (ErrorMessage);
 					return 2;
 				}
 				if(stepData.IABC_State[2] && stepData.ABC_State[2]){
 					_errorMessage =  "Line:" + (Index+1) + " " + "指令格式有误！";
-					if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-RotCal-89 %";
+					if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-RotCal-89 %";
 					_compileInfo.Add (ErrorMessage);
 					return 2;
 				}
 				if(stepData.IABC_State[3] && stepData.ABC_State[3]){
 					_errorMessage =  "Line:" + (Index+1) + " " + "指令格式有误！";
-					if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-RotCal-90 %";
+					if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-RotCal-90 %";
 					_compileInfo.Add (ErrorMessage);
 					return 2;
 				}
@@ -760,7 +760,7 @@ public class Lexical_Check{
 					if(CodeSeg[2] == "MM"){
 					}else{
 						_errorMessage = "Line:" +(Index+1)+" 暂时不支持Inch单位";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-CHK-91 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-CHK-91 %";
 						_compileInfo.Add (_errorMessage);
 						flag = false;
 					}
@@ -775,7 +775,7 @@ public class Lexical_Check{
 						++i;
 					}else{
 						_errorMessage = "Line:" +(Index+1)+" BLK FORM指令错误！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-CHK-92 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-CHK-92 %";
 						_compileInfo.Add (_errorMessage);
 						flag = false;
 					}
@@ -810,7 +810,7 @@ public class Lexical_Check{
 						}
 					}else{
 						_errorMessage = "Line:" +(Index+1)+" DR指令定义错误";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-CHK-93 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-CHK-93 %";
 						_compileInfo.Add (_errorMessage);
 						flag = false;
 					}
@@ -950,7 +950,7 @@ public class Lexical_Check{
 						Modal_State.Unit = MUnit.Metric;
 					else{
 						_errorMessage = "Line:" +(Index+1)+" 暂时不支持Inch单位";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-CHK-94 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-CHK-94 %";
 						_compileInfo.Add (_errorMessage);
 						temp_flag = false;
 					}
@@ -967,7 +967,7 @@ public class Lexical_Check{
 						++i;
 					}else{
 						_errorMessage = "Line:" +(Index+1)+" BLK FORM指令错误！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-CHK-95 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-CHK-95 %";
 						_compileInfo.Add (_errorMessage);
 						temp_flag = false;
 					}
@@ -1010,7 +1010,7 @@ public class Lexical_Check{
 						StepDate.DR_PN = -1;
 					}else{
 						_errorMessage = "Line:" +(Index+1)+" DR指令定义错误";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-CHK-96 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-CHK-96 %";
 						_compileInfo.Add (_errorMessage);
 						temp_flag = false;
 					}
@@ -1413,7 +1413,7 @@ public class Lexical_Check{
 							}
 						}else{
 							_errorMessage =  "Line:" + (Index+1) + " " + "TOOL指令错误！";
-							if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-97 %";
+							if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-97 %";
 							_compileInfo.Add (ErrorMessage);
 							return false;
 						}
@@ -1423,7 +1423,7 @@ public class Lexical_Check{
 					case (char)ImmediateMotionType.TOOLCALL:
 						if(Modal_State.RCompensation != (int)RCompEnum.R0){
 							_errorMessage =  "Line:" + (Index+1) + " " + "换刀前请先取消半径补偿！";
-							if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-98 %";
+							if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-98 %";
 							_compileInfo.Add (ErrorMessage);
 							return false;
 						}
@@ -1440,7 +1440,7 @@ public class Lexical_Check{
 							Modal_State.TValueBakFlag = true;
 						}else{
 							_errorMessage =  "Line:" + (Index+1) + " " + "TOOL指令错误！";
-							if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-99 %";
+							if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-99 %";
 							_compileInfo.Add (ErrorMessage);
 							return false;
 						}
@@ -1450,7 +1450,7 @@ public class Lexical_Check{
 					case (char)ImmediateMotionType.RadiusCompRight:
 						if(Modal_State.RCompensation == (int)RCompEnum.RL){
 							_errorMessage =  "Line:" + (Index+1) + " " + "请先取消左侧刀补！";
-							if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-100 %";
+							if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-100 %";
 							_compileInfo.Add (ErrorMessage);
 							return false;
 						}
@@ -1461,7 +1461,7 @@ public class Lexical_Check{
 					case (char)ImmediateMotionType.RadiusCompLeft:
 						if(Modal_State.RCompensation == (int)RCompEnum.RR){
 							_errorMessage =  "Line:" + (Index+1) + " " + "请先取消右侧刀补！";
-							if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-101 %";
+							if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-101 %";
 							_compileInfo.Add (ErrorMessage);
 							return false;
 						}
@@ -1521,7 +1521,7 @@ public class Lexical_Check{
 						StepMotion.Motion_Type = Modal_State.CurrentMotion;
 					}else{
 						_errorMessage =  "Line:" + (Index+1) + " " + "未知运动方式错误！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-102 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-102 %";
 						_compileInfo.Add (ErrorMessage);
 						return false;
 					}
@@ -1538,7 +1538,7 @@ public class Lexical_Check{
 						Modal_State.BLKFORM_1 = Start;
 					}else{
 						_errorMessage = "Line:" +(Index+1)+" BLK FORM指令错误！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-103 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-103 %";
 						_compileInfo.Add (_errorMessage);
 					}
 					break;
@@ -1550,7 +1550,7 @@ public class Lexical_Check{
 						Modal_State.BLKFORM_2 = End;
 					}else{
 						_errorMessage = "Line:" +(Index+1)+" BLK FORM指令错误！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-104 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-104 %";
 						_compileInfo.Add (_errorMessage);
 					}
 					break;
@@ -1559,7 +1559,7 @@ public class Lexical_Check{
 				case (int)MotionType.TOOLCALL:
 					if(StepDate.ToolNum == ""){
 						_errorMessage =  "Line:" + (Index+1) + " " + "TOOL指令错误！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-105 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-105 %";
 						_compileInfo.Add (ErrorMessage);
 						return false;
 					}
@@ -1634,7 +1634,7 @@ public class Lexical_Check{
 						}
 					}else{
 						_errorMessage =  "Line:" + (Index+1) + " " + "M140指令错误！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-106 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-106 %";
 						_compileInfo.Add (ErrorMessage);
 						return false;
 					}
@@ -1647,7 +1647,7 @@ public class Lexical_Check{
 				case (int)MotionType.Line:
 					if(Modal_State.FeedSpeed == 0 && StepDate.PosDef ()){
 						_errorMessage = "Line:" + (Index +1) + " " + "未指定进给速率!";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-107 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-107 %";
 						_compileInfo.Add(ErrorMessage);
 						return false;
 					}
@@ -1696,7 +1696,7 @@ public class Lexical_Check{
 						}
 					}else{
 						_errorMessage =  "Line:" + (Index+1) + " " + "M91未指定位置！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-108 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-108 %";
 						_compileInfo.Add (ErrorMessage);
 						return false;
 					}
@@ -1730,7 +1730,7 @@ public class Lexical_Check{
 				#region CR//OK
 				case (int)MotionType.CR:
 					_errorMessage =  "Line:" + (Index+1) + " " + "圆弧指令未指定圆弧运动方向！";
-					if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-109 %";
+					if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-109 %";
 					_compileInfo.Add (ErrorMessage);
 					return false;
 				#endregion
@@ -1739,7 +1739,7 @@ public class Lexical_Check{
 				case (int)MotionType.CR_N:
 					if(Modal_State.FeedSpeed == 0){
 						_errorMessage = "Line:" + (Index +1) + " " + "未指定进给速率!";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-110 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-110 %";
 						_compileInfo.Add(ErrorMessage);
 						return false;
 					}
@@ -1765,7 +1765,7 @@ public class Lexical_Check{
 							StepMotion.Circle_r = (DisplayPos-Modal_State.CC).magnitude;
 						}else{
 							_errorMessage = "Line:" + (Index +1) + " " + "未指定圆心坐标!";
-							if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-111 %";
+							if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-111 %";
 							_compileInfo.Add(ErrorMessage);
 							return false;
 						}
@@ -1801,19 +1801,19 @@ public class Lexical_Check{
 				case (int)MotionType.CP:
 					if(StepDate.IPA_Value * StepDate.DR_PN < 0){
 						_errorMessage =  "Line:" + (Index+1) + " " + "指令格式有误！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-112 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-112 %";
 						_compileInfo.Add (ErrorMessage);
 						return false;
 					}
 					if(!Modal_State.CC_Flag){
 						_errorMessage =  "Line:" + (Index+1) + " " + "未指定圆心位置！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-113 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-113 %";
 						_compileInfo.Add (ErrorMessage);
 						return false;
 					}
 					if(!StepDate.IXYZ_State[0] && !StepDate.IXYZ_State[3]){
 						_errorMessage =  "Line:" + (Index+1) + " " + "未指定IZ值！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-114 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-114 %";
 						_compileInfo.Add (ErrorMessage);
 						return false;
 					}
@@ -1841,7 +1841,7 @@ public class Lexical_Check{
 						StepDate.CHF_value = StepDate.SingleValue;
 					}else{
 						_errorMessage =  "Line:" + (Index+1) + " " + "指令格式有误！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-115 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-115 %";
 						_compileInfo.Add (ErrorMessage);
 						return false;
 					}
@@ -1853,7 +1853,7 @@ public class Lexical_Check{
 						StepDate.RND_value = StepDate.R_value;
 					}else{
 						_errorMessage =  "Line:" + (Index+1) + " " + "指令格式有误！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-116 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-116 %";
 						_compileInfo.Add (ErrorMessage);
 						return false;
 					}
@@ -1914,7 +1914,7 @@ public class Lexical_Check{
 						StepMotion.SetTargetPos (DisplayPos,VirtualPos,RotPos);
 					}else{
 						_errorMessage =  "Line:" + (Index+1) + " " + "CYCL DEF指令定义错误！";
-						if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-117 %";
+						if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-117 %";
 						_compileInfo.Add (ErrorMessage);
 						return false;
 					}
@@ -1982,7 +1982,7 @@ public class Lexical_Check{
 //									StepMotion.Time_Value = StepMotion.Direction_D.magnitude / StepMotion.Velocity * 60;
 								}else{
 									_errorMessage =  "Line:" + (Index+1) + " " + "PLANE SPATIAL指令定义错误！";
-									if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-118 %";
+									if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-118 %";
 									_compileInfo.Add (ErrorMessage);
 									return false;
 								}
@@ -2004,7 +2004,7 @@ public class Lexical_Check{
 							StepMotion.SetTargetPos (DisplayPos,VirtualPos,RotPos);
 						}else{
 							_errorMessage =  "Line:" + (Index+1) + " " + "PLANE SPATIAL指令定义错误！";
-							if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-119 %";
+							if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-119 %";
 							_compileInfo.Add (ErrorMessage);
 							return false;
 						}
@@ -2090,7 +2090,7 @@ public class Lexical_Check{
 //									StepMotion.Time_Value = StepMotion.Direction_D.magnitude / StepMotion.Velocity * 60;
 							}else{
 								_errorMessage =  "Line:" + (Index+1) + " " + "PLANE SPATIAL指令定义错误！";
-								if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-120 %";
+								if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-120 %";
 								_compileInfo.Add (ErrorMessage);
 								return false;
 							}
@@ -2173,7 +2173,7 @@ public class Lexical_Check{
 								//									StepMotion.Time_Value = StepMotion.Direction_D.magnitude / StepMotion.Velocity * 60;
 							}else{
 								_errorMessage =  "Line:" + (Index+1) + " " + "PLANE SPATIAL指令定义错误！";
-								if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-121 %";
+								if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-121 %";
 								_compileInfo.Add (ErrorMessage);
 								return false;
 							}
@@ -2233,7 +2233,7 @@ public class Lexical_Check{
 									//									StepMotion.Time_Value = StepMotion.Direction_D.magnitude / StepMotion.Velocity * 60;
 								}else{
 									_errorMessage =  "Line:" + (Index+1) + " " + "PLANE SPATIAL指令定义错误！";
-									if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-122 %";
+									if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-122 %";
 									_compileInfo.Add (ErrorMessage);
 									return false;
 								}
@@ -2253,7 +2253,7 @@ public class Lexical_Check{
 							StepMotion.SetTargetPos (DisplayPos,VirtualPos,RotPos);
 						}else{
 							_errorMessage =  "Line:" + (Index+1) + " " + "PLANE SPATIAL指令定义错误！";
-							if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-123 %";
+							if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-123 %";
 							_compileInfo.Add (ErrorMessage);
 							return false;
 						}
@@ -2289,7 +2289,7 @@ public class Lexical_Check{
 //									StepMotion.Time_Value = StepMotion.Direction_D.magnitude / StepMotion.Velocity * 60;
 							}else{
 								_errorMessage =  "Line:" + (Index+1) + " " + "PLANE SPATIAL指令定义错误！";
-								if(CompileParas.DEBUG) _errorMessage += "% ErrorDBG-Motion-124 %";
+								if(CompileParas._DEBUG) _errorMessage += "% ErrorDBG-Motion-124 %";
 								_compileInfo.Add (ErrorMessage);
 								return false;
 							}
@@ -2385,7 +2385,7 @@ public class HeidenhainCompileBase:Lexical_Check,ICompile
 			StepMotion.MotionCopy (ChamferBak);
 			if(StepMotion.Motion_Type != (int)MotionType.Line || !StepMotion.HasMotion ()){
 				string _error = "Line:" + (Pindex+1) + " " + "倒角(圆)指令错误！";
-				if(CompileParas.DEBUG) _error += "% ErrorDBG-Motion-125 %";
+				if(CompileParas._DEBUG) _error += "% ErrorDBG-Motion-125 %";
 				_compileInfo.Add (_error);
 				return false;
 			}
@@ -2488,13 +2488,13 @@ public class HeidenhainCompileBase:Lexical_Check,ICompile
 						motion_data[next].MotionCopy (motion3);
 					}else{
 						_error = "Line:" + (i+1) + " " + "倒角(圆)指令错误！";
-						if(CompileParas.DEBUG) _error += "% ErrorDBG-Motion-126 %";
+						if(CompileParas._DEBUG) _error += "% ErrorDBG-Motion-126 %";
 						_compileInfo.Add (_error);
 						return 0;
 					}
 				}else{
 					_error = "Line:" + (i+1) + " " + "倒角(圆)指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-Motion-127 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-Motion-127 %";
 					_compileInfo.Add (_error);
 					return 0;
 				}
@@ -2543,7 +2543,7 @@ public class HeidenhainCompileBase:Lexical_Check,ICompile
 			while(_MotionTypeNext == -1){
 				if(_Pindex >= CodeSeg.Count){
 					_error = "Line:" + (CHF_Index+1) + " " + "倒角(圆)指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-Motion-142 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-Motion-142 %";
 					_compileInfo.Add (_error);
 					return 0;
 				}
@@ -2559,7 +2559,7 @@ public class HeidenhainCompileBase:Lexical_Check,ICompile
 				}
 			}else{
 				_error = "Line:" + (CHF_Index+1) + " " + "倒角(圆)指令错误！";
-				if(CompileParas.DEBUG) _error += "% ErrorDBG-Motion-128 %";
+				if(CompileParas._DEBUG) _error += "% ErrorDBG-Motion-128 %";
 				_compileInfo.Add (_error);
 				return 0;
 			}
@@ -2584,7 +2584,7 @@ public class HeidenhainCompileBase:Lexical_Check,ICompile
 				ChamferBak.MotionCopy (TempMotion);
 			}else{
 				_error = "Line:" + (CHF_Index+1) + " " + "倒角(圆)指令错误！";
-				if(CompileParas.DEBUG) _error += "% ErrorDBG-Motion-129 %";
+				if(CompileParas._DEBUG) _error += "% ErrorDBG-Motion-129 %";
 				_compileInfo.Add (_error);
 				return 0;
 			}
@@ -2842,7 +2842,7 @@ public class HeidenhainCompileBase:Lexical_Check,ICompile
 					CalFunction.Calculate(ref StepMotion, ref TempMotion, CompensationBak,true,ref _errorMessage,ref _compileInfo);
 				}else{
 					_error = "Line:" + (Pindex+1) + " " + "补偿指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-Motion-143 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-Motion-143 %";
 					_compileInfo.Add (_error);
 					return 0;
 				}

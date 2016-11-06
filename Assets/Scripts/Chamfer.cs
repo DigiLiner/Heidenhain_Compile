@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
@@ -135,14 +135,14 @@ public class Chamfer {
 		string _error = "";
 		if((motion_data1.Motion_Type != (int)MotionType.Line && motion_data2.Motion_Type != (int)MotionType.CHF && motion_data3.Motion_Type != (int)MotionType.Line)){
 			_error = "Line:" + (motion_data2.index+1) + " " + "倒角指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-RND-1 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-RND-1 %";
 			_compileInfo.Add (_error);
 			return false;
 		}
 		
 		if(motion_data1.Direction_D.magnitude <= r_value || motion_data3.Direction_D.magnitude <= r_value){
 			_error = "Line:" + (motion_data2.index+1) + " " + "倒角(圆)指令错误,轨迹长度小于倒角(圆)值！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-RND-2 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-RND-2 %";
 			_compileInfo.Add (_error);
 			return false;
 		}
@@ -221,14 +221,14 @@ public class Chamfer {
 		string _error = "";
 		if((motion_data1.Motion_Type != (int)MotionType.Line && motion_data2.Motion_Type != (int)MotionType.CHF && motion_data3.Motion_Type != (int)MotionType.Line)){
 			_error = "Line:" + (motion_data2.index+1) + " " + "倒角指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CHF-3 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CHF-3 %";
 			_compileInfo.Add (_error);
 			return false;
 		}
 		
 		if(motion_data1.Direction_D.magnitude <= c_value || motion_data3.Direction_D.magnitude <= c_value){
 			_error = "Line:" + (motion_data2.index+1) + " " + "倒角(圆)指令错误,轨迹长度小于倒角(圆)值！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CHF-4 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CHF-4 %";
 			_compileInfo.Add (_error);
 			return false;
 		}
@@ -275,14 +275,14 @@ public class Chamfer {
 		string _error = "";
 		if((motion_data1.Motion_Type != (int)MotionType.Line && motion_data2.Motion_Type != (int)MotionType.CHF && motion_data3.Motion_Type != (int)MotionType.Line)){
 			_error = "Line:" + (motion_data2.index+1) + " " + "倒角指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CF-5 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CF-5 %";
 			_compileInfo.Add (_error);
 			return false;
 		}
 		
 		if(motion_data1.Direction_D.magnitude <= c_value || motion_data3.Direction_D.magnitude <= c_value){
 			_error = "Line:" + (motion_data1.index+1) + " " + "倒角(圆)指令错误,轨迹长度小于倒角(圆)值！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CF-6 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CF-6 %";
 			_compileInfo.Add (_error);
 			return false;
 		}

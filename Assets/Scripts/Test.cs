@@ -7,8 +7,9 @@ public class Test : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		CompileParas.DEBUG = true;
+		CompileParas._DEBUG = true;
 //		CompileInterface.SetRate (5);
+		/*
 		bool flag = CompileInterface.CompileEntrance ("xiaojiubei-111.H",2);
 		Debug.Log (flag);
 		List<string> Cinfo = CompileParas.ifCompileIFace.CompileInfo;
@@ -16,7 +17,7 @@ public class Test : MonoBehaviour {
 			for(int i = 0;i < Cinfo.Count;i++){
 				Debug.Log (Cinfo[i]);
 			}
-		}
+		}*/
 	}
 	
 	void OnGUI(){
@@ -127,7 +128,8 @@ public class Test : MonoBehaviour {
 		GUI.Label (new Rect(360,260,50,20),MachineAxis.GetCurrentPartPos.z.ToString ());
 		
 		GUI.Label (new Rect(80,280,150,30),"Code Running:");
-		GUI.Label (new Rect(170,280,150,20),CompileParas.stCopStcMoving.Motion.CodeStr);
+		if(CompileParas.stCopStcMoving != null)
+			GUI.Label (new Rect(170,280,150,20),CompileParas.stCopStcMoving.Motion.CodeStr);
 		
 		if(CompileInterface.CompileErrorState){
 			for(int i = 0;i < CompileInterface.GetErrorMessage.Count;i++){

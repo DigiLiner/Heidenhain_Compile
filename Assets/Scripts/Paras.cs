@@ -39,7 +39,8 @@ public static class CompileParas_Unity{
 
 /* ###########Warning 此类内不能出现Unity API################ */
 public static class CompileParas{
-	public static bool DEBUG						= false; /* % ErrorDBG-MoudleName-Max % ||Max is 143 Now||once add debug info, updates the value of Max */
+	public static bool _DEBUG						= false; /* % ErrorDBG-MoudleName-Max % ||Max is 143 Now||once add debug info, updates the value of Max */
+	public static bool _IsProgExit					= false;
 	
 	#region Protected Area
 	public static Move_Motion st_Move;
