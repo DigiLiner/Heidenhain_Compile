@@ -1,26 +1,25 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Test.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CompilMultiThread.cs">
     <Files>
-      <File FileName="Assets/Scripts/CompileInterface.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CompileInterface.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Compile.cs" Line="2315" Column="20" />
-      <File FileName="Assets/Scripts/Move_Motion.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Rot_Motion.cs" Line="65" Column="1" />
-      <File FileName="Assets/Scripts/CompilMultiThread.cs" Line="276" Column="1" />
-      <File FileName="Assets/Scripts/CompileBaseClass.cs" Line="423" Column="2" />
-      <File FileName="Assets/Scripts/Test.cs" Line="17" Column="20" />
-      <File FileName="Assets/Scripts/Paras.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/CodeBaseClass.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Load.cs" Line="1" Column="1" />
-      <File FileName="Assets/Scripts/Chamfer.cs" Line="186" Column="45" />
+      <File FileName="Assets\Scripts\CompilMultiThread.cs" Line="74" Column="51" />
+      <File FileName="Assets\Scripts\Compile.cs" Line="487" Column="1" />
+      <File FileName="Assets\Scripts\Chamfer.cs" Line="29" Column="1" />
+      <File FileName="Assets\Scripts\Test.cs" Line="28" Column="49" />
+      <File FileName="Assets\Scripts\CompileInterface.cs" Line="71" Column="16" />
+      <File FileName="Assets\Scripts\Move_Motion.cs" Line="228" Column="22" />
+      <File FileName="Assets\Scripts\Paras.cs" Line="384" Column="5" />
+      <File FileName="Assets\Scripts\Rot_Motion.cs" Line="65" Column="60" />
+      <File FileName="Assets\Scripts\Load.cs" Line="333" Column="31" />
+      <File FileName="Assets\Scripts\CodeBaseClass.cs" Line="270" Column="1" />
+      <File FileName="Assets\Scripts\Radius_CompCal.cs" Line="8" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
           <Node name="Assembly-CSharp" expanded="True">
             <Node name="Scripts" expanded="True">
-              <Node name="Test.cs" selected="True" />
+              <Node name="CompilMultiThread.cs" selected="True" />
             </Node>
           </Node>
         </State>

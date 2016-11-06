@@ -294,14 +294,14 @@ public class CYCL7:ICycl
 			Cycl_Value1 = float.Parse (_List[index][1]);
 		}catch{
 			string _error = "Line:"+(index+1)+" CYCL DEF 7指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF7-7 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF7-7 %";
 			errorMes.Add (_error);
 			return false;
 		}
 		
 		if(!Mathf.Approximately ((float)Math.Round(Cycl_Value1,1),7.0f)){
 			string _error = "Line:"+(index+1)+" CYCL DEF 7指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF7-8 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF7-8 %";
 			errorMes.Add (_error);
 			return false;
 		}
@@ -311,7 +311,7 @@ public class CYCL7:ICycl
 				Cycl_Value2 = float.Parse (_List[index+1][1]);
 			}catch{
 				string _error = "Line:"+(index+2)+" CYCL DEF 7指令错误！";
-				if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF7-9 %";
+				if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF7-9 %";
 				errorMes.Add (_error);
 				return false;
 			}
@@ -325,14 +325,14 @@ public class CYCL7:ICycl
 							Value_F = float.Parse (_Value);
 						}catch{
 							string _error = "Line:"+(index+2)+" CYCL DEF 7指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF7-10 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF7-10 %";
 							errorMes.Add (_error);
 							return false;
 						}
 						ValueSet (VType,Value_F);
 					}else{
 						string _error = "Line:"+(index+2)+" CYCL DEF 7指令错误！";
-						if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF7-11 %";
+						if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF7-11 %";
 						errorMes.Add (_error);
 						return false;
 					}
@@ -341,7 +341,7 @@ public class CYCL7:ICycl
 						return true;
 					}else{
 						string _error = "Line:"+(index+2)+" CYCL DEF 7指令错误！";
-						if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF7-12 %";
+						if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF7-12 %";
 						errorMes.Add (_error);
 						return false;
 					}
@@ -438,13 +438,13 @@ public class CYCL19:ICycl
 			Value_1 = float.Parse (_List[index][1]);
 		}catch{
 			string _error = "Line:"+(index+1)+" CYCL DEF 19指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF19-13 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF19-13 %";
 			errorMes.Add (_error);
 			return false;
 		}
 		if(!Mathf.Approximately ((float)Math.Round(Value_1,1),19.0f)){
 			string _error = "Line:"+(index+1)+" CYCL DEF 19指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF19-14 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF19-14 %";
 			errorMes.Add (_error);
 			return false;
 		}
@@ -454,7 +454,7 @@ public class CYCL19:ICycl
 				Value_2 = float.Parse (_List[index+1][1]);
 			}catch{
 				string _error = "Line:"+(index+1)+" CYCL DEF 19指令错误！";
-				if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF19-15 %";
+				if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF19-15 %";
 				errorMes.Add (_error);
 				return false;
 			}
@@ -470,7 +470,7 @@ public class CYCL19:ICycl
 								ValueSet (_Type,_Value);
 							}catch{
 								string _error = "Line:"+(index+1)+" CYCL DEF 19指令错误！";
-								if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF19-16 %";
+								if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF19-16 %";
 								errorMes.Add (_error);
 								return false;
 							}
@@ -558,13 +558,13 @@ public class CYCL32:ICycl
 			Value_1 = float.Parse (_List[index][1]);
 		}catch{
 			string _error = "Line:"+(index+1)+" CYCL DEF 32指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF32-17 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF32-17 %";
 			errorMes.Add (_error);
 			return false;
 		}
 		if(!Mathf.Approximately ((float)Math.Round(Value_1,1), 32.0f)){
 			string _error = "Line:"+(index+1)+" CYCL DEF 32指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF32-18 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF32-18 %";
 			errorMes.Add (_error);
 			return false;
 		}
@@ -574,7 +574,7 @@ public class CYCL32:ICycl
 				Value_2 = float.Parse (_List[index+1][1]);
 			}catch{
 				string _error = "Line:"+(index+2)+" CYCL DEF 32指令错误！";
-				if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF32-19 %";
+				if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF32-19 %";
 				errorMes.Add (_error);
 				return false;
 			}
@@ -587,7 +587,7 @@ public class CYCL32:ICycl
 								T_Value = float.Parse (TempStr);
 							}catch{
 								string _error = "Line:"+index+1+" CYCL DEF 32指令错误！";
-								if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF32-20 %";
+								if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF32-20 %";
 								errorMes.Add (_error);
 								return false;
 							}
@@ -607,20 +607,20 @@ public class CYCL32:ICycl
 								TA_Value = float.Parse (Temp_Str2);
 							}catch{
 								string _error = "Line:"+(index+2)+" CYCL DEF 32指令错误！";
-								if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF32-21 %";
+								if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF32-21 %";
 								errorMes.Add (_error);
 								return false;
 							}
 						}else{
 							string _error = "Line:"+(index+2)+" CYCL DEF 32指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF32-22 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF32-22 %";
 							errorMes.Add (_error);
 							return false;
 						}
 						index++;
 					}else{
 						string _error = "Line:"+(index+2)+" CYCL DEF 32指令错误！";
-						if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF32-23 %";
+						if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF32-23 %";
 						errorMes.Add (_error);
 						return false;
 					}
@@ -630,7 +630,7 @@ public class CYCL32:ICycl
 						break;
 					}else{
 						string _error = "Line:"+(index+2)+" CYCL DEF 32指令错误！";
-						if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDEF32-24 %";
+						if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDEF32-24 %";
 						errorMes.Add (_error);
 						return false;
 					}
@@ -667,13 +667,13 @@ public class CYCL247:ICycl
 			Value = int.Parse (_List[index][1]);
 		}catch{
 			string _error = "Line:"+(index+1)+" CYCL DEF 247指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDE247-25 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDE247-25 %";
 			errorMes.Add (_error);
 			return false;
 		}
 		if(Value != 247){
 			string _error = "Line:"+(index+1)+" CYCL DEF 247指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDE247-26 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDE247-26 %";
 			errorMes.Add (_error);
 			return false;
 		}
@@ -687,26 +687,26 @@ public class CYCL247:ICycl
 					CoorIndex = int.Parse (Str2);
 					if(CoorIndex < 0){
 						string _error = "Line:"+(index+2)+" CYCL DEF 247指令错误！";
-						if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDE247-27 %";
+						if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDE247-27 %";
 						errorMes.Add (_error);
 						return false;
 					}
 				}catch{
 					string _error = "Line:"+(index+2)+" CYCL DEF 247指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDE247-28 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDE247-28 %";
 					errorMes.Add (_error);
 					return false;
 				}
 			}else{
 				string _error = "Line:"+(index+2)+" CYCL DEF 247指令错误！";
-				if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDE247-29 %";
+				if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDE247-29 %";
 				errorMes.Add (_error);
 				return false;
 			}
 			++index;
 		}else{
 			string _error = "Line:"+(index+2)+" CYCL DEF 247指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-CYCLEDE247-30 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-CYCLEDE247-30 %";
 			errorMes.Add (_error);
 			return false;
 		}
@@ -780,7 +780,7 @@ public class PLANE:ICycl
 			case PlaneType.SPATIAL:
 				if(_List[index].Count < 6){
 					string _error = "Line:"+(index+1)+" PLANE指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-31 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-31 %";
 					errorMes.Add (_error);
 					return false;
 				}
@@ -792,7 +792,7 @@ public class PLANE:ICycl
 							SP_State[1] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-32 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-32 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -803,7 +803,7 @@ public class PLANE:ICycl
 							SP_State[2] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-33 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-33 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -814,7 +814,7 @@ public class PLANE:ICycl
 							SP_State[3] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-34 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-34 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -829,7 +829,7 @@ public class PLANE:ICycl
 					}
 					if(!SP_State[1] || !SP_State[2] || !SP_State[3]){
 						string _error = "Line:"+(index+1)+" PLANE指令错误！";
-						if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-35 %";
+						if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-35 %";
 						errorMes.Add (_error);
 						return false;
 					}
@@ -840,7 +840,7 @@ public class PLANE:ICycl
 			case PlaneType.PROJECTED:
 				if(_List[index].Count < 6){
 					string _error = "Line:"+(index+1)+" PLANE指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-36 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-36 %";
 					errorMes.Add (_error);
 					return false;
 				}
@@ -852,7 +852,7 @@ public class PLANE:ICycl
 							PR_State[1] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-37 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-37 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -863,7 +863,7 @@ public class PLANE:ICycl
 							PR_State[2] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-38 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-38 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -874,7 +874,7 @@ public class PLANE:ICycl
 							PR_State[3] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-39 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-39 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -889,7 +889,7 @@ public class PLANE:ICycl
 					}
 					if(!PR_State[1] || !PR_State[2] || !PR_State[3]){
 						string _error = "Line:"+(index+1)+" PLANE指令错误！";
-						if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-40 %";
+						if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-40 %";
 						errorMes.Add (_error);
 						return false;
 					}
@@ -900,7 +900,7 @@ public class PLANE:ICycl
 			case PlaneType.EULER:
 				if(_List[index].Count < 6){
 					string _error = "Line:"+(index+1)+" PLANE指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-41 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-41 %";
 					errorMes.Add (_error);
 					return false;
 				}
@@ -912,7 +912,7 @@ public class PLANE:ICycl
 							EU_State[1] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-42 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-42 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -923,7 +923,7 @@ public class PLANE:ICycl
 							EU_State[2] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-43 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-43 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -934,7 +934,7 @@ public class PLANE:ICycl
 							EU_State[3] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-44 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-44 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -950,7 +950,7 @@ public class PLANE:ICycl
 				}
 				if(!EU_State[1] || !EU_State[2] || !EU_State[3]){
 					string _error = "Line:"+(index+1)+" PLANE指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-45 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-45 %";
 					errorMes.Add (_error);
 					return false;
 				}
@@ -960,7 +960,7 @@ public class PLANE:ICycl
 			case PlaneType.VECTOR:
 				if(_List[index].Count < 9){
 					string _error = "Line:"+(index+1)+" PLANE指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-46 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-46 %";
 					errorMes.Add (_error);
 					return false;
 				}
@@ -972,7 +972,7 @@ public class PLANE:ICycl
 							BN_State[1] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-47 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-47 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -983,7 +983,7 @@ public class PLANE:ICycl
 							BN_State[2] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-48 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-48 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -994,7 +994,7 @@ public class PLANE:ICycl
 							BN_State[3] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-49 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-49 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1005,7 +1005,7 @@ public class PLANE:ICycl
 							BN_State[4] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-50 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-50 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1016,7 +1016,7 @@ public class PLANE:ICycl
 							BN_State[5] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-51 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-51 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1027,7 +1027,7 @@ public class PLANE:ICycl
 							BN_State[6] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-52 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-52 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1043,7 +1043,7 @@ public class PLANE:ICycl
 				}
 				if(!BN_State[1] || !BN_State[2] || !BN_State[3] || !BN_State[4] || !BN_State[5] || !BN_State[6]){
 					string _error = "Line:"+(index+1)+" PLANE指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-53 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-53 %";
 					errorMes.Add (_error);
 					return false;
 				}
@@ -1053,7 +1053,7 @@ public class PLANE:ICycl
 			case PlaneType.POINTS:
 				if(_List[index].Count < 12){
 					string _error = "Line:"+(index+1)+" PLANE指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-54 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-54 %";
 					errorMes.Add (_error);
 					return false;
 				}
@@ -1064,7 +1064,7 @@ public class PLANE:ICycl
 							P1X = float.Parse (Str);
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-55 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-55 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1074,7 +1074,7 @@ public class PLANE:ICycl
 							P1Y = float.Parse (Str);
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-56 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-56 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1084,7 +1084,7 @@ public class PLANE:ICycl
 							P1Z = float.Parse (Str);
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-57 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-57 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1094,7 +1094,7 @@ public class PLANE:ICycl
 							P2X = float.Parse (Str);
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-58 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-58 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1104,7 +1104,7 @@ public class PLANE:ICycl
 							P2Y = float.Parse (Str);
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-59 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-59 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1114,7 +1114,7 @@ public class PLANE:ICycl
 							P2Z = float.Parse (Str);
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-60 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-60 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1124,7 +1124,7 @@ public class PLANE:ICycl
 							P3X = float.Parse (Str);
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-61 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-61 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1134,7 +1134,7 @@ public class PLANE:ICycl
 							P3Y = float.Parse (Str);
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-62 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-62 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1144,7 +1144,7 @@ public class PLANE:ICycl
 							P3Z = float.Parse (Str);
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-63 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-63 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1171,7 +1171,7 @@ public class PLANE:ICycl
 							SP_State[1] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-64 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-64 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1183,7 +1183,7 @@ public class PLANE:ICycl
 							SP_State[2] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-65 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-65 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1195,7 +1195,7 @@ public class PLANE:ICycl
 							SP_State[3] = true;
 						}catch{
 							string _error = "Line:"+(index+1)+" PLANE指令错误！";
-							if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-66 %";
+							if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-66 %";
 							errorMes.Add (_error);
 							return false;
 						}
@@ -1215,7 +1215,7 @@ public class PLANE:ICycl
 			case PlaneType.RESET:
 				if(_List[index].Count < 3){
 					string _error = "Line:"+(index+1)+" PLANE指令错误！";
-					if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-67 %";
+					if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-67 %";
 					errorMes.Add (_error);
 					return false;
 				}
@@ -1235,13 +1235,13 @@ public class PLANE:ICycl
 			}
 			if(!moveTypeGet (Str_List,ref MoveType)){
 				string _error = "Line:"+(index+1)+" PLANE指令错误！";
-				if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-68 %";
+				if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-68 %";
 				errorMes.Add (_error);
 				return false;
 			}
 		}else{
 			string _error = "Line:"+(index+1)+" PLANE指令错误！";
-			if(CompileParas.DEBUG) _error += "% ErrorDBG-PLANE-69 %";
+			if(CompileParas._DEBUG) _error += "% ErrorDBG-PLANE-69 %";
 			errorMes.Add (_error);
 			return false;
 		}

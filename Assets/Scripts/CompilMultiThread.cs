@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Threading;
+using System;
+using System.IO;
 
 
 //############Warning################
@@ -68,24 +70,78 @@ public class CompilMultiThread : MonoBehaviour {
 	
 	/* To Kill Thread When Application Quit */
 	void OnApplicationQuit(){
+		
+		/* 程序退出时让线程自己消亡，Abort操作在windows上可能会让unity主程挂死 */
+		if(false == CompileParas._IsProgExit){
+			print ("Waitting for Threads exit!");
+			CompileParas._IsProgExit = true;
+		}
+		
+		int iCount = 0;
+		const int iCountMax = 100000; /* 等待时间 */
+		while (
+			(true == CompileParas._IsProgExit)     && 
+			((CompileParas.thCompileThread != null && CompileParas.thCompileThread.IsAlive) ||
+			 (CompileParas.thMotionThread  != null && CompileParas.thMotionThread.IsAlive)  ||
+			 (CompileParas.thRotThread     != null && CompileParas.thRotThread.IsAlive)	    ||
+			 (CompileParas.thLineThread    != null && CompileParas.thLineThread.IsAlive)    ||
+			 (CompileParas.thLoadThread    != null && CompileParas.thLoadThread.IsAlive))
+		){
+			if (iCount >= iCountMax){
+				print ("Thread exit Failed! Somewhere may have Deadloop or Deadlock!");
+				if(CompileParas.thCompileThread != null && CompileParas.thCompileThread.IsAlive) {
+					print ("Killing thCompileThread!");
+				}
+				if(CompileParas.thMotionThread != null  && CompileParas.thMotionThread.IsAlive) {
+					print ("Killing thMotionThread!");
+				}
+				if(CompileParas.thRotThread != null     && CompileParas.thRotThread.IsAlive) {
+					print ("Killing thRotThread!");
+				}
+				if(CompileParas.thLineThread != null    && CompileParas.thLineThread.IsAlive) {
+					print ("Killing thLineThread!");
+				}
+				if(CompileParas.thLoadThread != null    && CompileParas.thLoadThread.IsAlive) {
+					print ("Killing thLoadThread!");
+				}
+				break;
+			}
+			iCount++;
+		};
+		
+		if (iCount < iCountMax) {
+			print ("All threads have exited normally!");
+		}
+		CompileParas._IsProgExit = false;
+		
 		if(CompileParas.thCompileThread != null && CompileParas.thCompileThread.IsAlive){
 			CompileParas.thCompileThread.Abort ();
+			CompileParas.thCompileThread = null;
+			print ("thCompileThread killed!");
 		}
 		
 		if(CompileParas.thMotionThread != null && CompileParas.thMotionThread.IsAlive){
 			CompileParas.thMotionThread.Abort ();
+			CompileParas.thMotionThread = null;
+			print ("thMotionThread killed!");
 		}
 		
 		if(CompileParas.thRotThread != null && CompileParas.thRotThread.IsAlive){
 			CompileParas.thRotThread.Abort ();
+			CompileParas.thRotThread = null;
+			print ("thRotThread killed!");
 		}
 		
 		if(CompileParas.thLineThread != null && CompileParas.thLineThread.IsAlive){
 			CompileParas.thLineThread.Abort ();
+			CompileParas.thLineThread = null;
+			print ("thLineThread killed!");
 		}
 		
 		if(CompileParas.thLoadThread != null && CompileParas.thLoadThread.IsAlive){
 			CompileParas.thLoadThread.Abort ();
+			CompileParas.thLoadThread = null;
+			print ("thLoadThread killed!");
 		}
 	}
 	#endregion
@@ -117,7 +173,7 @@ public class CompilMultiThread : MonoBehaviour {
 			return;
 		}
 		
-		while(true){
+		while(false == CompileParas._IsProgExit){
 			/* 防止编译完仍等待信号量造成死锁,正常情况下从这退出 */
 			if(CompileParas.iCompileCount >= CompileParas.iCompileRunCount){
 				break;
@@ -126,6 +182,12 @@ public class CompilMultiThread : MonoBehaviour {
 			if(CompileParas.iCompileIndex < CompileParas.lsCode_All.Count){
 				CompileParas.seCompile_SemCompile.WaitOne ();
 //				print ("Compile");
+				
+				if(true == CompileParas._IsProgExit){
+					CompileParas.seCompile_SemMotion.Release ();
+					break;
+				}
+				
 				CompileStuct_S temp_stc = new CompileStuct_S(CompileParas.stCopStcCompiling);
 				CompileParas.bErrorStateFlag = !(temp_stc.Compile (CompileParas.ifCompileIFace, CompileParas.lsCode_All, ref CompileParas.iCompileIndex));
 				//print ("ERROR STATE:"+CompileParas.ErrorStateFlag.ToString ());
@@ -141,7 +203,7 @@ public class CompilMultiThread : MonoBehaviour {
 				break;
 			}
 		}
-		Debug.Log ("Compile out");
+		Debug.Log ("Compile Thread Exits Normally!");
 	}
 	
 	static void Motion_Main(){
@@ -152,12 +214,19 @@ public class CompilMultiThread : MonoBehaviour {
 			return;
 		}
 		
-		while(true){
+		while(false == CompileParas._IsProgExit){
 			/* 防止运行完仍等待信号量造成死锁,正常情况下从这退出 */
 			if(CompileParas.iRunCount >= CompileParas.iCompileRunCount){
 				break;
 			}
 			CompileParas.seCompile_SemMotion.WaitOne ();
+			
+			
+			if(true == CompileParas._IsProgExit){
+				CompileParas.seCompile_SemCompile.Release ();
+				break;
+			}
+			
 			if(!IsFirstMotion){
 				CompileParas.stCopStcMoving = CompileParas.stCopStcMoving.Next;
 			}
@@ -175,7 +244,7 @@ public class CompilMultiThread : MonoBehaviour {
 			IsFirstMotion = false;
 		}
 		CompileParas.MotionFalgReset ();
-		Debug.Log ("Motion out");
+		Debug.Log ("Motion Thread Exits Normally!");
 	}
 	#endregion
 	

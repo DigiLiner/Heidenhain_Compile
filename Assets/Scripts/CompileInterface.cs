@@ -132,10 +132,10 @@ public static class CompileInterface{
 
 	public static bool DEBUG_MODE{
 		set{
-			CompileParas.DEBUG = value;
+			CompileParas._DEBUG = value;
 		}
 		get{
-			return CompileParas.DEBUG;
+			return CompileParas._DEBUG;
 		}
 	}
 }
